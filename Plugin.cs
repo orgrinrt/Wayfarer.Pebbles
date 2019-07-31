@@ -1,7 +1,14 @@
-﻿namespace Wayfarer.Pebbles
+﻿#if TOOLS
+
+using Godot;
+
+namespace Wayfarer.Pebbles
 {
-    public class Plugin
+    [Tool]
+    public class Plugin : EditorPlugin
     {
         
     }
 }
+
+#endif
