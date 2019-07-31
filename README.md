@@ -2,6 +2,6 @@
 
 Requires: Wayfarer.Overwatch
 
-Suggested: Wayfarer (core)
+Suggested: Wayfarer (core), Wayfarer.EditorExplorer
 
 ---
