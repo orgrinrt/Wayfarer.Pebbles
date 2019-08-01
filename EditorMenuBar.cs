@@ -1,7 +1,6 @@
 #if TOOLS
 
 using Godot;
-using Wayfarer;
 using Wayfarer.Core.Utils.Attributes;
 using Wayfarer.Core.Utils.Debug;
 using Wayfarer.Core.Utils.Helpers;
