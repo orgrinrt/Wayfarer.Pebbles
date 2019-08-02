@@ -1,8 +1,8 @@
 # Wayfarer.Pebbles
 
-Requires: Wayfarer.Overwatch
+Requires: Wayfarer.Overwatch, Wayfarer (core)
 
-Suggested: Wayfarer (core), Wayfarer.EditorExplorer
+Suggested: Wayfarer.EditorExplorer
 
 ---
 

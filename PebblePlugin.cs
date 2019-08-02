@@ -2,6 +2,7 @@
 
 using System;
 using Godot;
+using Wayfarer.Core.Systems.Managers;
 using Wayfarer.Core.Utils.Attributes;
 using Wayfarer.Core.Utils.Debug;
 using Wayfarer.Core.Utils.Helpers;
@@ -19,7 +20,8 @@ namespace Wayfarer.Pebbles
         
         public override void _EnterTree()
         {
-            _manager = new PebbleManager();
+            _manager = new PebbleManager { Name = "Manager" };
+
             AddChild(_manager);
             try
             {
@@ -27,7 +29,7 @@ namespace Wayfarer.Pebbles
             }
             catch (Exception e)
             {
-                Log.Error("Couldn't add custom controls in Pebble, resetting may work", e, true);
+                Log.Wf.EditorError("Couldn't add custom controls in Pebble, resetting may work", e, true);
             }
             
             AddCustomResources();
@@ -37,20 +39,21 @@ namespace Wayfarer.Pebbles
         {
             RemoveCustomControlsFromEditor();
             RemoveCustomResources();
-        }
-        
-        public override void DisablePlugin()
-        {
-            base.DisablePlugin();
-
             try
             {
                 RemoveOldEditorMenubar();
             }
             catch (Exception e)
             {
-                Log.Wf.Editor("Couldn't remove the OLD EditorMenuBar", e, true);
+                Log.Wf.EditorError("Couldn't remove the OLD EditorMenuBar", e, true);
             }
+        }
+        
+        public override void DisablePlugin()
+        {
+            base.DisablePlugin();
+
+            
         }
         
         private void AddCustomControlsToEditor()
@@ -58,18 +61,17 @@ namespace Wayfarer.Pebbles
             PackedScene toolbarScene = GD.Load<PackedScene>("res://Addons/Wayfarer.Pebbles/Assets/Scenes/EditorMenuBar.tscn");
             _editorMenuBar = (EditorMenuBar)toolbarScene.Instance();
             _editorMenuBar.SetEditorInterface(GetEditorInterface());
-            _editorMenuBar.SetPlugin(this);
             AddControlToContainer(CustomControlContainer.CanvasEditorMenu, _editorMenuBar);
         }
         
         private void AddCustomResources()
         {
             Script nodeScript = GD.Load<Script>("res://Addons/Wayfarer.Pebbles/Resources/PebbleMetaData.cs");
-            Texture nodeIcon = GD.Load<Texture>("res://Addons/Wayfarer/Assets/Icons/resource.png");
+            Texture nodeIcon = GD.Load<Texture>("res://Addons/Wayfarer.Core/Assets/Icons/resource.png");
             AddCustomType("PebbleMetaData", "Resource", nodeScript, nodeIcon);
 
             Script nodeListScript = GD.Load<Script>("res://Addons/Wayfarer.Pebbles/Resources/PebbleDatabase.cs");
-            Texture nodeListIcon = GD.Load<Texture>("res://Addons/Wayfarer/Assets/Icons/wayfarerNodes.png");
+            Texture nodeListIcon = GD.Load<Texture>("res://Addons/Wayfarer.Core/Assets/Icons/wayfarerNodes.png");
             AddCustomType("PebbleDatabase", "Resource", nodeListScript, nodeListIcon);
         }
         
@@ -83,7 +85,8 @@ namespace Wayfarer.Pebbles
             }
             catch (Exception e)
             {
-                Log.Wf.Editor("Couldn't remove the EditorMenuBar", e, true);
+                Log.Wf.EditorError("Couldn't remove the EditorMenuBar", e, true);
+                
                 if (e.Message.StartsWith("Cannot access"))
                 {
                     Log.Wf.Simple("This is because it is already removed - no action needed, not a bug!", true);
@@ -111,7 +114,7 @@ namespace Wayfarer.Pebbles
                     }
                     catch (Exception e)
                     {
-                        Log.Wf.Editor("Tried to remove EditorMenuBar from Toolbar, but couldn't", e, true);
+                        Log.Wf.EditorError("Tried to remove EditorMenuBar from Toolbar, but couldn't", e, true);
                     }
                     try
                     {
@@ -120,7 +123,7 @@ namespace Wayfarer.Pebbles
                     }
                     catch (Exception e)
                     {
-                        Log.Wf.Editor("Tried to QueueFree() EditorMenuBar from Toolbar, but couldn't", e, true);
+                        Log.Wf.EditorError("Tried to QueueFree() EditorMenuBar from Toolbar, but couldn't", e, true);
                     }
                     return;
                 }
