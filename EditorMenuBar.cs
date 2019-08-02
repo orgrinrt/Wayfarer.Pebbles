@@ -11,7 +11,7 @@ namespace Wayfarer.Pebbles
     [Tool]
     public class EditorMenuBar : Control
     {
-        [Get("HBox/AddNodeMenu/Button")] private Button _addNodeButton;
+        [Get("HBox/AddNodeMenu/Button")] private Button _addNodeButton = null;
     
         private AddNodeDialog _addNodeDialog;
         private EditorInterface _editorInterface;
