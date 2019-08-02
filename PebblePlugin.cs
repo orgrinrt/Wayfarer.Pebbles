@@ -20,6 +20,8 @@ namespace Wayfarer.Pebbles
         
         public override void _EnterTree()
         {
+            EnablePlugin();
+            
             _manager = new PebbleManager { Name = "Manager" };
 
             AddChild(_manager);
@@ -47,6 +49,8 @@ namespace Wayfarer.Pebbles
             {
                 Log.Wf.EditorError("Couldn't remove the OLD EditorMenuBar", e, true);
             }
+            DisablePlugin();
+            
         }
         
         public override void DisablePlugin()
