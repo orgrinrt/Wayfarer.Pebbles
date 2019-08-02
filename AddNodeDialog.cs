@@ -8,8 +8,6 @@ namespace Wayfarer.Pebbles
     [Tool]
     public class AddNodeDialog : WindowDialog
     {
-        [Export()] private string _test;
-        
         private Godot.Collections.Array _selectedNodes;
     
         public override void _Ready()
