@@ -2,10 +2,10 @@
 
 using System;
 using Godot;
-using Wayfarer.Core.Systems.Managers;
-using Wayfarer.Core.Utils.Attributes;
-using Wayfarer.Core.Utils.Debug;
-using Wayfarer.Core.Utils.Helpers;
+using Wayfarer;
+using Wayfarer.ModuleSystem;
+using Wayfarer.Utils.Debug;
+using Wayfarer.Utils.Helpers;
 
 namespace Wayfarer.Pebbles
 {
