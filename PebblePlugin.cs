@@ -10,7 +10,7 @@ using Wayfarer.Core.Utils.Helpers;
 namespace Wayfarer.Pebbles
 {
     [Tool]
-    public class PebblePlugin : EditorPlugin
+    public class PebblePlugin : WayfarerModule
     {
         private PebbleManager _manager;
         private EditorMenuBar _editorMenuBar;
