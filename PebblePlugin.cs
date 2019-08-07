@@ -18,10 +18,8 @@ namespace Wayfarer.Pebbles
         public PebbleManager Manager => _manager;
         public EditorInterface EditorInterface => GetEditorInterface();
         
-        public override void _EnterTree()
+        public override void _EnterTreeSafe()
         {
-            base._EnterTree();
-            
             _manager = new PebbleManager { Name = "Manager" };
 
             AddChild(_manager);
@@ -34,12 +32,10 @@ namespace Wayfarer.Pebbles
                 Log.Wf.EditorError("Couldn't add custom controls in Pebble, resetting may work", e, true);
             }
             
-            
-            
             AddCustomResources();
         }
 
-        public override void _ExitTree()
+        public override void _ExitTreeSafe()
         {
             RemoveCustomControlsFromEditor();
             RemoveCustomResources();
@@ -51,7 +47,6 @@ namespace Wayfarer.Pebbles
             {
                 Log.Wf.EditorError("Couldn't remove the OLD EditorMenuBar", e, true);
             }
-            base._ExitTree();
         }
         
         private void AddCustomControlsToEditor()
