@@ -1,8 +1,8 @@
 using Godot;
 using Godot.Collections;
-using Wayfarer.Core.Utils.Debug;
+using Wayfarer.Utils.Debug;
 
-namespace Wayfarer.Core.Plugin.Resources
+namespace Wayfarer.Pebbles.Resources
 {
     public class PebbleMetaData : Resource
     {

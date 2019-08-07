@@ -1,9 +1,9 @@
 #if TOOLS
 
 using Godot;
-using Wayfarer.Core.Utils.Attributes;
-using Wayfarer.Core.Utils.Debug;
-using Wayfarer.Core.Utils.Helpers;
+using Wayfarer.Utils.Attributes;
+using Wayfarer.Utils.Debug;
+using Wayfarer.Utils.Helpers;
 using Array = Godot.Collections.Array;
 
 namespace Wayfarer.Pebbles

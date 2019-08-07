@@ -1,9 +1,8 @@
 ﻿using System;
 using Godot;
-using Wayfarer.Core.Utils.Debug;
 using Array = Godot.Collections.Array;
 
-namespace Wayfarer.Core.Plugin.Resources
+namespace Wayfarer.Pebbles.Resources
 {
     public class PebbleToolbox : Resource
     {

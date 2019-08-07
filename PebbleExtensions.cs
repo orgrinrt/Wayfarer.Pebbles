@@ -1,6 +1,4 @@
-﻿using Wayfarer.Core.Utils.Debug;
-
-namespace Wayfarer.Pebbles
+﻿namespace Wayfarer.Pebbles
 {
     public static class PebbleExtensions
     {

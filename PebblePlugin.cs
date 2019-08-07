@@ -2,10 +2,10 @@
 
 using System;
 using Godot;
-using Wayfarer.Core.Systems.Managers;
-using Wayfarer.Core.Utils.Attributes;
-using Wayfarer.Core.Utils.Debug;
-using Wayfarer.Core.Utils.Helpers;
+using Wayfarer;
+using Wayfarer.ModuleSystem;
+using Wayfarer.Utils.Debug;
+using Wayfarer.Utils.Helpers;
 
 namespace Wayfarer.Pebbles
 {
@@ -18,10 +18,8 @@ namespace Wayfarer.Pebbles
         public PebbleManager Manager => _manager;
         public EditorInterface EditorInterface => GetEditorInterface();
         
-        public override void _EnterTree()
+        public override void _EnterTreeSafe()
         {
-            EnablePlugin();
-            
             _manager = new PebbleManager { Name = "Manager" };
 
             AddChild(_manager);
@@ -37,7 +35,7 @@ namespace Wayfarer.Pebbles
             AddCustomResources();
         }
 
-        public override void _ExitTree()
+        public override void _ExitTreeSafe()
         {
             RemoveCustomControlsFromEditor();
             RemoveCustomResources();
@@ -49,15 +47,6 @@ namespace Wayfarer.Pebbles
             {
                 Log.Wf.EditorError("Couldn't remove the OLD EditorMenuBar", e, true);
             }
-            DisablePlugin();
-            
-        }
-        
-        public override void DisablePlugin()
-        {
-            base.DisablePlugin();
-
-            
         }
         
         private void AddCustomControlsToEditor()
